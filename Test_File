@@ -1,3 +1,15 @@
-This is a test trigger
+# Create Dockerfile
+cat > Dockerfile << EOF
+FROM <base image>
+COPY ROOT.war /usr/local/tomcat/webapps/ROOT.war
+EOF
+cat Dockerfile
 
-Try 1
+
+# Build image from Dockerfile
+docker image build -t $imageTag .
+docker tag $imageTag $imageLatestTag
+
+# Upload image to the GCP Container Registry
+
+docker push
